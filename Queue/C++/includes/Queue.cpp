@@ -26,3 +26,5 @@ template <typename _Q>
 bool Queue<_Q>::isEmpty(){
     return this->m_data.empty();
 }
+
+template class Queue<int>;
