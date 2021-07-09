@@ -3,9 +3,9 @@
 //
 
 #ifndef SORTING_H
+#define SORTING_H
 #include <vector>
 #include <iostream>
 void selectionSort(std::vector<int>&);
-#define SORTING_H
-
+void swap(int &f, int &s);
 #endif //SORTING_H
