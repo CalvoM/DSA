@@ -18,7 +18,8 @@ int main(int argc, char **argv){
         item = rand()%(dataSize*5);
        data.push_back(item);
     }
-    selectionSort(data);
+    for(auto d:data)std::cout<<d<<std::endl;
+    bubbleSort(data);
     for(auto d:data)std::cout<<d<<std::endl;
 }
 
