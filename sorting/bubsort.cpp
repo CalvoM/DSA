@@ -6,7 +6,6 @@
 void bubbleSort(std::vector<int>& data){
     for(int final=data.size()-1;final>=0;final--){
         for(int i=0;i<=final-1;i++){
-            std::cout<<"("<<data[i]<<","<<data[i+1]<<")";
             if(data[i]>data[i+1]) {
                 swap(data[i], data[i + 1]);
             }

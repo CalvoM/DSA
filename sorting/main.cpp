@@ -19,7 +19,7 @@ int main(int argc, char **argv){
        data.push_back(item);
     }
     for(auto d:data)std::cout<<d<<std::endl;
-    bubbleSort(data);
+    selectionSort(data);
     for(auto d:data)std::cout<<d<<std::endl;
 }
 
