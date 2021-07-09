@@ -11,6 +11,6 @@ type BSNode struct {
 type BSTree struct {
 }
 
-func (b *BSTree) contains(node *BSNode, target int) bool {
+func (b *BSTree) Contains(node *BSNode, target int) bool {
 
 }
