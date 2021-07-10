@@ -10,6 +10,5 @@ void bubbleSort(std::vector<int>& data){
                 swap(data[i], data[i + 1]);
             }
         }
-        std::cout<<std::endl;
     }
 }
