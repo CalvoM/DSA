@@ -10,5 +10,6 @@ void selectionSort(std::vector<int>&);
 void bubbleSort(std::vector<int>&);
 void mergeSort(std::vector<int>&, int , int);
 void insertionSort(std::vector<int>&);
+void quickSort(std::vector<int>&, int,int);
 void swap(int &f, int &s);
 #endif //SORTING_H

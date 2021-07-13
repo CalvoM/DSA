@@ -20,7 +20,7 @@ int main(int argc, char **argv){
     }
     for(auto d:data)std::cout<<d<<" ";
     std::cout<<std::endl;
-    mergeSort(data,0,dataSize-1);
+    quickSort(data,0,dataSize-1);
     for(auto d:data)std::cout<<d<<" ";
     std::cout<<std::endl;
 }

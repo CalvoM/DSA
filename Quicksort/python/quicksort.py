@@ -25,7 +25,7 @@ def quickSort(elements, start, end):
 
 
 if __name__ == "__main__":
-    numbers = [9, 8, 7, 6, 5, 4, 3, 2, 1]
+    numbers = [11,21,9,10,5]
     print(numbers)
     quickSort(numbers, 0, len(numbers)-1)
     print(numbers, counter, len(numbers))
