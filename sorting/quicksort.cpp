@@ -3,29 +3,41 @@
 //
 
 #include "sorting.h"
-
-int partition(std::vector<int> &data, int low, int high){
-    int pivot =  data[high];
-    int indexToCheck=low;
-    int pivotLoc = low-1; //Arbitrary pivot location
-    while(indexToCheck < high){
-        if(pivot >= data[indexToCheck]){
-            pivotLoc++;
-            swap(data[pivotLoc],data[indexToCheck]);
-        }
-        indexToCheck++;
+int optimalPartition(std::vector<int> &data, int start, int end){
+    int mid = (start + end)/2;
+    int pivot = data[mid];
+    std::cout<<pivot<<std::endl;
+    int ltTracker = start;
+    int gtTracker = end;
+    while(gtTracker > ltTracker){
+        while(pivot<data[gtTracker])gtTracker--;
+        while(pivot>data[ltTracker])ltTracker++;
+        if(gtTracker> ltTracker)swap(data[gtTracker],data[ltTracker]);
     }
-    pivotLoc++;
-    swap(data[pivotLoc],data[high]);//In case the lowest is at the end
-
-    return pivotLoc;
+    swap(data[mid],data[gtTracker]);
+    return gtTracker;
 }
-void quickSort(std::vector<int>& data, int low, int high){
+int partition(std::vector<int> &data, int start, int end){
+    int pivot = data[start];
+    int ltTracker = start;
+    int gtTracker = end+1;
+    while(gtTracker>=ltTracker){
+        do{gtTracker--;}while(pivot<data[gtTracker]);
+        do{ltTracker++;}while(pivot>data[ltTracker]);
+        if(gtTracker > ltTracker){
+            swap(data[ltTracker],data[gtTracker]);
+        }
+
+    }
+    swap(data[start],data[gtTracker]);
+    return gtTracker;
+}
+void quickSort(std::vector<int>& data, int start, int end){
     for(auto d:data)std::cout<<d<<" ";
     std::cout<<std::endl;
-    if(low!=high){
-        int pivot = partition(data,low,high);
-        quickSort(data,low,pivot-1);
-        quickSort(data,pivot+1,high);
+    if(start<end){
+        int pivot = optimalPartition(data,start,end);
+        quickSort(data,start,pivot-1);
+        quickSort(data,pivot+1,end);
     }
 }

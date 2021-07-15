@@ -4,7 +4,7 @@
 #include "sorting.h"
 
 void swap(int &f, int &s){
-    f = f+s;
-    s = f-s;
-    f = f-s;
+    int temp = f;
+    f = s;
+    s=temp;
 }
