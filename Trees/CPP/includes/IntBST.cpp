@@ -99,7 +99,7 @@ void IntBST::postOrderTraversal(IntNode *node) {
 }
 int IntBST::max(){
     if(this->root == nullptr){
-        return -1;
+        return INT32_MIN;
     }
     IntNode *node=root;
     while(node->right != nullptr)node = node->right;
@@ -107,10 +107,31 @@ int IntBST::max(){
 }
 int IntBST::min(){
     if(this->root == nullptr){
-        return -1;
+        return INT32_MIN;
     }
     IntNode *node=root;
     while(node->left != nullptr)node = node->left;
     return node->value;
 }
 
+int IntBST::successor(int value){
+    if(this->root == nullptr) return INT32_MIN;
+    return 0;
+}
+
+int IntBST::predecessor(int value){
+    if(this->root == nullptr) return INT32_MIN;
+    return 0;
+}
+
+IntNode* IntBST::search(IntNode *node) {
+    if(this->valueToSearch == node->value) return node;
+    else if(this->valueToSearch< node->value){
+        if(node->left == nullptr) return nullptr;
+        return search(node->left);
+    }else if(this->valueToSearch > node->value){
+        if(node->right == nullptr) return nullptr;
+        return search(node->right);
+    }
+    return nullptr;
+}

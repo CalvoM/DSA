@@ -20,9 +20,11 @@ public:
 class IntBST{
 private:
     IntNode *root;
+    int valueToSearch;
     unsigned int count=0;
     void insert(IntNode*, int );
-    bool search(IntNode*,int);
+    bool search(IntNode*, int);
+    IntNode* search(IntNode*);
     void preOrderTraversal(IntNode *node);
     void inOrderTraversal(IntNode *node);
     void postOrderTraversal(IntNode *node);
@@ -38,6 +40,9 @@ public:
     void postOrderTraversal();
     int max();
     int min();
+    int predecessor(int);
+    int successor(int);
+    void deleteNode(int value);
     unsigned int length()const{return count;}
 };
 #endif //INT_BST_H

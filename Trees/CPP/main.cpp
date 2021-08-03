@@ -1,5 +1,6 @@
 #include <iostream>
 #include "includes/IntBST.h"
+#define varName(x) #x
 int main (int argc,char** argv){
     IntBST tree;
     tree.insert(4);
