@@ -12,13 +12,20 @@ struct Edge{
     unsigned int src, dest,weight;
 };
 
+struct NodeCost{
+    int val=INT_MIN;
+};
+struct NodeParent{
+    int val=INT_MIN;
+};
 class Graph{
 public:
     Graph(unsigned int vertices);
     void addEdge(Edge edge);
     void printGraph();
-    void BFSTraversal(Vertex &);
-    void DFSTraversal(Vertex &);
+    void BFSTraversal(Vertex );
+    void DFSTraversal(Vertex );
+    int costEffective(Vertex, Vertex);
     ~Graph();
 private:
     Vertex **conn;

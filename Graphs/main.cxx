@@ -1,12 +1,9 @@
 #include "includes/Graph.hpp"
 #include <iostream>
 int main(){
-    Graph g(8);
-    Edge paths[] = {{0,1,1},{1,2,1},{2,3,1},{3,0,1},{2,4,1},{4,5,1},{5,6,1},{6,7,1},{6,4,1}};
-    for(auto p:paths){
+    Graph g(6);
+    Edge paths[] = {{0,1,5},{0,2,0},{1,3,15},{1,4,20},{2,3,30},{2,4,35},{3,5,20},{4,5,10}};
+    for(auto p: paths){
         g.addEdge(p);
     }
-    g.printGraph();
-    auto start = Vertex{0,1,nullptr};
-    g.DFSTraversal(start);
 }

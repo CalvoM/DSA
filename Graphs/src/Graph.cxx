@@ -4,6 +4,19 @@
 #include <queue>
 #include <vector>
 #include <algorithm>
+#include <map>
+#include <limits>
+using std::cout; 
+using std::map; 
+using std::vector;
+using std::queue;
+using std::numeric_limits;
+struct NodeCost{
+    int val=numeric_limits<int>::min();
+};
+struct NodeParent{
+    int val=numeric_limits<int>::min();
+};
 Graph::Graph(unsigned int vertices){
     this->conn = new Vertex* [vertices]();
     this->vertCnt = vertices;
@@ -15,7 +28,7 @@ Graph::Graph(unsigned int vertices){
 void Graph::addEdge(Edge edge){
     Vertex *v = new Vertex();
     v->val = edge.dest;
-    v->cost =0;
+    v->cost = edge.weight;
     v->next = conn[edge.src];
     conn[edge.src] = v;
     edgeCnt++;
@@ -24,24 +37,24 @@ void Graph::addEdge(Edge edge){
 void Graph::printGraph(){
     for(int k=0;k<this->vertCnt;k++){
         auto c = conn[k];
-        std::cout<<k<<" --- ";
+        cout<<k<<" --- ";
         while(c != nullptr){
             std::cout<<c->val<<"->";
             c = c->next;
         }
-        std::cout<<std::endl;
+        cout<<std::endl;
     }
 }
 
-void Graph::BFSTraversal(Vertex &v){
+void Graph::BFSTraversal(Vertex v){
     if(this->edgeCnt == 0 ){
         std::cout<<"Nothing to traverse"<<std::endl;
         return;
     }
     int curr = v.val;
-    std::vector<int> visited;
+    vector<int> visited;
     visited.push_back(curr);
-    std::queue<int> bfs;
+    queue<int> bfs;
     bfs.push(curr);
     auto node = conn[curr];
     while(!bfs.empty()){
@@ -56,15 +69,15 @@ void Graph::BFSTraversal(Vertex &v){
         node = conn[bfs.front()];
     }
     for(auto i:visited)std::cout<<i<<" ";
-    std::cout<<std::endl;
+    cout<<std::endl;
 }
 
-void Graph::DFSTraversal(Vertex &v){
-    std::vector<unsigned int> visited;
+void Graph::DFSTraversal(Vertex v){
+    vector<unsigned int> visited;
     visited.push_back(v.val);
     this->DFS(v,visited);
     for(auto i:visited)std::cout<<i<<" ";
-    std::cout<<std::endl;
+    cout<<std::endl;
     return;
 }
 void Graph::DFS(Vertex v, std::vector<unsigned int> &visited){
@@ -75,6 +88,23 @@ void Graph::DFS(Vertex v, std::vector<unsigned int> &visited){
             DFS(*c,visited);
         }
         c = c->next;
+    }
+}
+int Graph::costEffective(Vertex start, Vertex end){
+    map<unsigned int, NodeCost> nodeCost;
+    map<unsigned int, NodeParent> nodeParent;
+    auto minVal = numeric_limits<int>::min();
+    auto endV = this->conn[end.val];
+    auto currV = this->conn[start.val];
+    auto parentV = this->conn[start.val];
+    while(true){
+    while(currV != nullptr){
+        if(nodeCost[currV->val].val == minVal){
+            nodeCost[currV->val].val = parentV->cost + currV->cost;
+        }else{
+            nodeCost[currV->val].val = 
+        }
+    } 
     }
 }
 
