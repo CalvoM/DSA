@@ -12,4 +12,8 @@ int main(int argc, char **argv) {
   heap.Print();
   heap.AddElement(9);
   heap.Print();
+  heap.Delete();
+  heap.Print();
+  heap.Delete();
+  heap.Print();
 }

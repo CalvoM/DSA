@@ -19,18 +19,32 @@ public:
 int BHeap::AddElement(int value) {
   this->heap.push_back(value);
   switch (this->heapType) {
-    case HeapType::max:
-        this->maxCreateHeap();
-        break;
-    case HeapType::min:
-        this->minCreateHeap();
-        break;
-    default:
-        break;
+  case HeapType::max:
+    this->maxCreateHeap();
+    break;
+  case HeapType::min:
+    this->minCreateHeap();
+    break;
+  default:
+    break;
   }
   return this->heap.size() - 1;
 }
-void BHeap::Delete() {}
+void BHeap::Delete() {
+  int del_el = this->heap[0];
+  this->heap[0] = this->heap[this->heap.size() - 1];
+  this->heap.pop_back();
+  switch (this->heapType) {
+  case HeapType::max:
+    this->maxCreateHeap();
+    break;
+  case HeapType::min:
+    this->minCreateHeap();
+    break;
+  default:
+    break;
+  }
+}
 void BHeap::minCreateHeap() {
   int new_el_index = this->heap.size() - 1;
   int parent_index = 0;
