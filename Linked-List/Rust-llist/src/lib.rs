@@ -1,3 +1,2 @@
-pub use node::Node;
+pub use node::{LinkedList, Node};
 mod node;
-
