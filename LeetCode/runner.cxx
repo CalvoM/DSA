@@ -43,3 +43,11 @@ TEST_CASE("Array Questions 2", "[Max Profit]") {
   int ans = 7;
   REQUIRE(solutions.max_profit(orig) == ans);
 }
+
+TEST_CASE("Array Question 3", "[Rotate Matrix]") {
+  ArraysSolutions solutions;
+  std::vector<int> orig0 = {1, 2, 3, 4, 5, 6, 7};
+  std::vector<int> ans0 = {5, 6, 7, 1, 2, 3, 4};
+  solutions.rotate_matrix_inplace(orig0, 3);
+  REQUIRE(orig0 == ans0);
+}

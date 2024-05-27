@@ -42,3 +42,30 @@ int ArraysSolutions::max_profit(std::vector<int> &prices) {
   }
   return total_profit;
 }
+
+void ArraysSolutions::rotate_matrix(std::vector<int> &nums, int k) {
+  std::vector<int> buffer(nums.size());
+  for (int idx = 0; idx < nums.size(); idx++) {
+    int new_pos = (idx + k) % nums.size();
+    buffer[new_pos] = nums[idx];
+  }
+  nums = buffer;
+}
+
+void ArraysSolutions::rotate_matrix_inplace(std::vector<int> &nums, int k) {
+  int separator = k % nums.size();
+  this->reverse_array(nums, 0, nums.size() - 1);
+  this->reverse_array(nums, 0, separator - 1);
+  this->reverse_array(nums, separator, nums.size() - 1);
+}
+
+void ArraysSolutions::reverse_array(std::vector<int> &nums, int start,
+                                    int end) {
+  while (end >= start) {
+    int buf = nums[start];
+    nums[start] = nums[end];
+    nums[end] = buf;
+    start++;
+    end--;
+  }
+}
