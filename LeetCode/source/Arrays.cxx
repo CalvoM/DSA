@@ -1,7 +1,8 @@
 #include "../includes/Arrays.hpp"
-#include <algorithm>
+#include <bitset>
 #include <catch2/catch_message.hpp>
 #include <iostream>
+#include <set>
 
 int ArraysSolutions::remove_duplicate_in_sorted_array(std::vector<int> &nums) {
   int final_size = 0;
@@ -68,4 +69,13 @@ void ArraysSolutions::reverse_array(std::vector<int> &nums, int start,
     start++;
     end--;
   }
+}
+bool ArraysSolutions::contains_duplicates(std::vector<int> &nums) {
+  std::set<int> final_nums;
+  for (auto num : nums) {
+    if (final_nums.insert(num).second == false) {
+      return true;
+    }
+  }
+  return false;
 }
