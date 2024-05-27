@@ -4,5 +4,6 @@
 class ArraysSolutions {
 public:
   int remove_duplicate_in_sorted_array(std::vector<int> &num);
+  int max_profit(std::vector<int> &prices);
 };
 #endif

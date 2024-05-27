@@ -3,7 +3,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include <vector>
 
-TEST_CASE("Question Set One", "[Array-Questions]") {
+TEST_CASE("Array Questions 1", "[Remove duplicates]") {
   ArraysSolutions solutions;
   std::vector<int> orig = {1, 2, 3, 4};
   std::vector<int> expected = {1, 2, 3, 4};
@@ -29,4 +29,17 @@ TEST_CASE("Question Set One", "[Array-Questions]") {
   for (int k = 0; k < 1; k++) {
     REQUIRE(orig3[k] == expected3[k]);
   }
+}
+
+TEST_CASE("Array Questions 2", "[Max Profit]") {
+  ArraysSolutions solutions;
+  std::vector<int> orig0 = {7, 6, 5, 4, 3, 2, 1};
+  int ans0 = 0;
+  REQUIRE(solutions.max_profit(orig0) == ans0);
+  std::vector<int> orig1 = {1, 2, 3, 4, 5};
+  int ans1 = 4;
+  REQUIRE(solutions.max_profit(orig1) == ans1);
+  std::vector<int> orig = {7, 1, 5, 3, 6, 4};
+  int ans = 7;
+  REQUIRE(solutions.max_profit(orig) == ans);
 }
