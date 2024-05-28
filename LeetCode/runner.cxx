@@ -51,3 +51,15 @@ TEST_CASE("Array Question 3", "[Rotate Matrix]") {
   solutions.rotate_matrix_inplace(orig0, 3);
   REQUIRE(orig0 == ans0);
 }
+
+TEST_CASE("Array Question 4", "[Intersection Array]") {
+  ArraysSolutions solutions;
+  std::vector<int> orig0 = {1, 2, 2, 1};
+  std::vector<int> orig1 = {2, 2};
+  std::vector<int> ans0 = {2, 2};
+  REQUIRE(solutions.array_intersect(orig0, orig1) == ans0);
+  std::vector<int> orig2 = {4, 9, 5};
+  std::vector<int> orig3 = {9, 4, 9, 8, 4};
+  std::vector<int> ans1 = {4, 9};
+  REQUIRE(solutions.array_intersect(orig2, orig3) == ans1);
+}

@@ -1,8 +1,10 @@
 #include "../includes/Arrays.hpp"
+#include <algorithm>
 #include <bitset>
 #include <catch2/catch_message.hpp>
 #include <iostream>
 #include <set>
+#include <unordered_map>
 
 int ArraysSolutions::remove_duplicate_in_sorted_array(std::vector<int> &nums) {
   int final_size = 0;
@@ -78,4 +80,47 @@ bool ArraysSolutions::contains_duplicates(std::vector<int> &nums) {
     }
   }
   return false;
+}
+int ArraysSolutions::single_number(std::vector<int> nums) {
+  int xor_num = nums[0];
+  for (int k = 1; k < nums.size(); k++)
+    xor_num = xor_num ^ nums[k];
+  return xor_num;
+}
+std::vector<int> ArraysSolutions::array_intersect(std::vector<int> nums1,
+                                                  std::vector<int> nums2) {
+  std::vector<int> intersects;
+  std::unordered_map<int, int> intersect_maps;
+  std::unordered_map<int, int> intersect_maps2;
+  for (auto n1 : nums1) {
+    auto it = intersect_maps.find(n1);
+    if (it != intersect_maps.end()) {
+      intersect_maps.insert({n1, it->second + 1});
+      it->second++;
+    } else {
+      intersect_maps.insert({n1, 1});
+    }
+  }
+  for (auto n2 : nums2) {
+    auto it = intersect_maps2.find(n2);
+    if (it != intersect_maps2.end()) {
+      intersect_maps2.insert({n2, it->second + 1});
+      it->second++;
+    } else {
+      intersect_maps2.insert({n2, 1});
+    }
+  }
+  for (auto m2 : intersect_maps2) {
+    auto it = intersect_maps.find(m2.first);
+    if (it != intersect_maps.end()) {
+      int m2_count = m2.second;
+      int m1_count = it->second;
+      auto el_count = std::min(m2_count, m1_count);
+      while (el_count > 0) {
+        intersects.push_back(m2.first);
+        el_count--;
+      }
+    }
+  }
+  return intersects;
 }
