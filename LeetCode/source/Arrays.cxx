@@ -150,3 +150,16 @@ void ArraysSolutions::move_zeroes(std::vector<int> &nums) {
     nums[non_zero_idx++] = 0;
   }
 }
+std::vector<int> ArraysSolutions::two_sum(std::vector<int> &nums, int target) {
+  std::vector<int> res;
+  for (int k = 0; k < nums.size(); k++) {
+    for (int j = k; j < nums.size(); j++) {
+      if (nums[k] + nums[j] == target) {
+        res.push_back(k);
+        res.push_back(j);
+        return res;
+      }
+    }
+  }
+  return res;
+}

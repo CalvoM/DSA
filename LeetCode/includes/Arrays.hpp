@@ -13,6 +13,7 @@ public:
                                    std::vector<int> nums2);
   std::vector<int> plus_one(std::vector<int> &digits);
   void move_zeroes(std::vector<int> &nums);
+  std::vector<int> two_sum(std::vector<int> &nums, int target);
 
 private:
   void reverse_array(std::vector<int> &nums, int start, int end);
