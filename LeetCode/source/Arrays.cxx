@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <bitset>
 #include <catch2/catch_message.hpp>
+#include <cmath>
 #include <iostream>
 #include <set>
 #include <unordered_map>
@@ -123,4 +124,29 @@ std::vector<int> ArraysSolutions::array_intersect(std::vector<int> nums1,
     }
   }
   return intersects;
+}
+
+std::vector<int> ArraysSolutions::plus_one(std::vector<int> &digits) {
+  for (int i = digits.size() - 1; i >= 0; --i) {
+    if (digits[i] + 1 > 9) {
+      digits[i] = 0;
+      if (i == 0)
+        digits.insert(digits.begin(), 1);
+    } else {
+      digits[i] += 1;
+      break;
+    }
+  }
+  return digits;
+}
+void ArraysSolutions::move_zeroes(std::vector<int> &nums) {
+  int non_zero_idx = 0;
+  for (int idx = 0; idx < nums.size(); idx++) {
+    if (nums[idx] != 0) {
+      nums[non_zero_idx++] = nums[idx];
+    }
+  }
+  while (non_zero_idx < nums.size()) {
+    nums[non_zero_idx++] = 0;
+  }
 }

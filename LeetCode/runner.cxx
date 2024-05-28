@@ -63,3 +63,39 @@ TEST_CASE("Array Question 4", "[Intersection Array]") {
   std::vector<int> ans1 = {4, 9};
   REQUIRE(solutions.array_intersect(orig2, orig3) == ans1);
 }
+
+TEST_CASE("Array Question 5", "[Plus One]") {
+  ArraysSolutions solutions;
+  std::vector<int> orig0 = {4, 3, 2, 1};
+  std::vector<int> ans0 = {4, 3, 2, 2};
+  REQUIRE(solutions.plus_one(orig0) == ans0);
+  std::vector<int> orig1 = {9};
+  std::vector<int> ans1 = {1, 0};
+  REQUIRE(solutions.plus_one(orig1) == ans1);
+  std::vector<int> orig2 = {0};
+  std::vector<int> ans2 = {1};
+  REQUIRE(solutions.plus_one(orig2) == ans2);
+  std::vector<int> orig3 = {6, 1, 4, 5, 3, 9, 0, 1, 9, 5,
+                            1, 8, 6, 7, 0, 5, 5, 4, 3};
+  std::vector<int> ans3 = {6, 1, 4, 5, 3, 9, 0, 1, 9, 5,
+                           1, 8, 6, 7, 0, 5, 5, 4, 4};
+  REQUIRE(solutions.plus_one(orig3) == ans3);
+  std::vector<int> orig4 = {7, 2, 8, 5, 0, 9, 1, 2, 9, 5, 3, 6, 6,
+                            7, 3, 2, 8, 4, 3, 7, 9, 5, 7, 7, 4, 7,
+                            4, 9, 4, 7, 0, 1, 1, 1, 7, 4, 0, 0, 6};
+  std::vector<int> ans4 = {7, 2, 8, 5, 0, 9, 1, 2, 9, 5, 3, 6, 6,
+                           7, 3, 2, 8, 4, 3, 7, 9, 5, 7, 7, 4, 7,
+                           4, 9, 4, 7, 0, 1, 1, 1, 7, 4, 0, 0, 7};
+  REQUIRE(solutions.plus_one(orig4) == ans4);
+}
+TEST_CASE("Array Question 6", "[Move Zeroes]") {
+  ArraysSolutions solutions;
+  std::vector<int> orig0 = {0, 1, 0, 3, 12};
+  std::vector<int> ans0 = {1, 3, 12, 0, 0};
+  solutions.move_zeroes(orig0);
+  REQUIRE(orig0 == ans0);
+  std::vector<int> orig1 = {2, 1};
+  std::vector<int> ans1 = {2, 1};
+  solutions.move_zeroes(orig1);
+  REQUIRE(orig1 == ans1);
+}

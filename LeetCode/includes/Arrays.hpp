@@ -11,6 +11,8 @@ public:
   int single_number(std::vector<int> nums);
   std::vector<int> array_intersect(std::vector<int> nums1,
                                    std::vector<int> nums2);
+  std::vector<int> plus_one(std::vector<int> &digits);
+  void move_zeroes(std::vector<int> &nums);
 
 private:
   void reverse_array(std::vector<int> &nums, int start, int end);
