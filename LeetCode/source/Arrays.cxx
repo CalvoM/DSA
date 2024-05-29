@@ -4,6 +4,7 @@
 #include <catch2/catch_message.hpp>
 #include <cmath>
 #include <iostream>
+#include <map>
 #include <set>
 #include <unordered_map>
 
@@ -162,4 +163,46 @@ std::vector<int> ArraysSolutions::two_sum(std::vector<int> &nums, int target) {
     }
   }
   return res;
+}
+bool ArraysSolutions::is_valid_sudoku(std::vector<std::vector<char>> &board) {
+  // check row
+  std::set<char> buffer_set;
+  for (auto row : board) {
+    buffer_set.clear();
+    for (auto item : row) {
+      if (item != '.') {
+        if (!buffer_set.insert(item).second)
+          return false;
+      }
+    }
+  }
+  // check col
+  for (int col = 0; col < board[0].size(); col++) {
+    buffer_set.clear();
+    for (auto row : board) {
+      if (row[col] != '.') {
+        if (!buffer_set.insert(row[col]).second)
+          return false;
+      }
+    }
+  }
+  // check box
+  for (int box_row_idx = 0; box_row_idx < board[0].size(); box_row_idx += 3) {
+    for (int box_col_idx = 0; box_col_idx < board[0].size(); box_col_idx += 3) {
+      int inner_col_idx = box_col_idx, inner_row_idx = box_row_idx;
+      buffer_set.clear();
+      while (inner_row_idx < box_row_idx + 3) {
+        inner_col_idx = box_col_idx;
+        while (inner_col_idx < box_col_idx + 3) {
+          if (board[inner_row_idx][inner_col_idx] != '.') {
+            if (!buffer_set.insert(board[inner_row_idx][inner_col_idx]).second)
+              return false;
+          }
+          inner_col_idx++;
+        }
+        inner_row_idx++;
+      }
+    }
+  }
+  return true;
 }

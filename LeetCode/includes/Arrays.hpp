@@ -14,6 +14,7 @@ public:
   std::vector<int> plus_one(std::vector<int> &digits);
   void move_zeroes(std::vector<int> &nums);
   std::vector<int> two_sum(std::vector<int> &nums, int target);
+  bool is_valid_sudoku(std::vector<std::vector<char>> &board);
 
 private:
   void reverse_array(std::vector<int> &nums, int start, int end);
