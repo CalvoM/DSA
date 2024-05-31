@@ -1,4 +1,5 @@
 #include "includes/Arrays.hpp"
+#include "includes/DP.hpp"
 #include <catch2/catch_message.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <vector>
@@ -135,4 +136,11 @@ TEST_CASE("Array Question 7", "[Valid Sudoku]") {
       {'.', '2', '.', '9', '.', '.', '.', '.', '.'},
       {'.', '.', '4', '.', '.', '.', '.', '.', '.'}};
   REQUIRE(solutions.is_valid_sudoku(orig2) == false);
+}
+TEST_CASE("Dynamic Programming", "[Steps]") {
+  DPSolutions dp;
+  REQUIRE(dp.climb_stairs(2) == 2);
+  REQUIRE(dp.climb_stairs(3) == 3);
+  REQUIRE(dp.climb_stairs(4) == 5);
+  REQUIRE(dp.climb_stairs(5) == 8);
 }
