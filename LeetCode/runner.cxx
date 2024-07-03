@@ -144,3 +144,36 @@ TEST_CASE("Dynamic Programming", "[Steps]") {
   REQUIRE(dp.climb_stairs(4) == 5);
   REQUIRE(dp.climb_stairs(5) == 8);
 }
+TEST_CASE("Dynamic Programming", "[Prices]") {
+  DPSolutions dp;
+  std::vector<int> prices0 = {7, 1, 5, 3, 6, 4};
+  REQUIRE(dp.max_profit(prices0) == 5);
+  std::vector<int> prices1 = {7, 6, 5, 4, 3, 2};
+  REQUIRE(dp.max_profit(prices1) == 0);
+}
+TEST_CASE("Dynamic Programming", "[Fib Tabs]") {
+  DPSolutions dp;
+  REQUIRE(dp.fib_tab(8) == 21);
+  REQUIRE(dp.fib_tab(6) == 8);
+  REQUIRE(dp.fib_tab(9) == 34);
+  REQUIRE(dp.fib_tab(10) == 55);
+  REQUIRE(dp.fib_tab(11) == 89);
+  REQUIRE(dp.fib_tab(12) == 144);
+  REQUIRE(dp.fib_tab(50) == 12586269025);
+}
+TEST_CASE("Dynamic Programming", "[Can Sum]") {
+  DPSolutions dp;
+  std::vector<int> orig = {2, 3, 5};
+  std::vector<std::vector<int>> ans = {{2, 2, 2, 2}, {2, 3, 3}, {3, 5}};
+  auto actual_ans = dp.combination_sum(orig, 8);
+  REQUIRE(actual_ans.size() == 3);
+  std::vector<int> orig1 = {2};
+  std::vector<int> ans1 = {};
+  std::vector<std::vector<int>> actual_ans1 = dp.combination_sum(orig1, 1);
+  REQUIRE(actual_ans1.size() == 0);
+  std::vector<int> orig3 = {2, 3, 6, 7};
+  std::vector<std::vector<int>> ans3 = {{2, 3, 2}, {7}};
+  std::vector<std::vector<int>> actual_ans3 = dp.combination_sum(orig3, 7);
+  REQUIRE(actual_ans3 == ans3);
+  REQUIRE(actual_ans3.size() == 2);
+}
