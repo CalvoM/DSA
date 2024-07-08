@@ -3,7 +3,6 @@ use std::{cmp::Ordering, collections::HashMap};
 pub struct Solution {}
 impl Solution {
     pub fn coin_change(coins: Vec<i32>, amount: i32) -> i32 {
-        let _ = coins;
         let mut memo: HashMap<i32, Option<Vec<i32>>> = HashMap::new();
         let res = Solution::_coin_change(&coins, amount, &mut memo);
         if let Some(ans) = res {
@@ -29,8 +28,9 @@ impl Solution {
                 Ordering::Less => None,
                 Ordering::Greater => {
                     let mut short_combination: Option<Vec<i32>> = None;
+                    let mut diff = amount;
                     for coin in coins {
-                        let diff = amount - coin;
+                        diff = amount - coin;
                         let res = Solution::_coin_change(coins, diff, memo);
                         if let Some(res_) = res {
                             let mut combination: Vec<i32> = vec![*coin];
@@ -50,5 +50,15 @@ impl Solution {
                 }
             }
         }
+    }
+    pub fn convert_time(current: String, correct: String) -> i32 {
+        let cur_hh_mm = Solution::extract_time(current);
+        let correct_hh_mm = Solution::extract_time(correct);
+        let amount = (correct_hh_mm[0] - cur_hh_mm[0]) * 60 + (correct_hh_mm[1] - cur_hh_mm[1]);
+        Solution::coin_change(vec![1, 5, 15, 60], amount)
+    }
+    fn extract_time(time_str: String) -> Vec<i32> {
+        let hh_mm: Vec<&str> = time_str.split(':').collect();
+        hh_mm.iter().map(|x| x.parse::<i32>().unwrap()).collect()
     }
 }
